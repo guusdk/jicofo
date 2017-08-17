@@ -465,7 +465,7 @@ public class XmppProtocolProvider
      *
      * @return {@link XmppConnection} provided by this instance.
      */
-    XmppConnection getConnectionAdapter()
+    synchronized XmppConnection getConnectionAdapter()
     {
         if (connectionAdapter == null && connection != null)
         {
