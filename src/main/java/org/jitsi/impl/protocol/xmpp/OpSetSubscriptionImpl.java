@@ -87,6 +87,11 @@ public class OpSetSubscriptionImpl
     private final XmppProtocolProvider parentProvider;
 
     /**
+     * Smack-compatible connection wrapper for the protocol provider.
+     */
+    private XmppConnectionSmackAdapter smackAdapter;
+
+    /**
      * How often do we retry PubSub subscribe operation(in ms).
      */
     private Long retryInterval;
@@ -111,6 +116,7 @@ public class OpSetSubscriptionImpl
         }
 
         this.parentProvider = parentProvider;
+        smackAdapter = new XmppConnectionSmackAdapter( parentProvider.getConnection() );
     }
 
     /**
@@ -149,7 +155,7 @@ public class OpSetSubscriptionImpl
     private PubSubManager getManager()
     {
         return PubSubManager.getInstance(
-                parentProvider.getConnection(),
+                smackAdapter,
                 pubSubAddress);
     }
 

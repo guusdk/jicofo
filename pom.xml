@@ -66,6 +66,11 @@
       <version>${smack.version}</version>
     </dependency>
     <dependency>
+      <groupId>org.igniterealtime.smack</groupId>
+      <artifactId>smack-tcp</artifactId>
+      <version>${smack.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.igniterealtime.whack</groupId>
       <artifactId>core</artifactId>
       <version>2.0.1</version>

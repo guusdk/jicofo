@@ -1163,8 +1163,7 @@ public class ChatRoomImpl
                 XmppProtocolProvider protocolProvider
                     = (XmppProtocolProvider) getParentProvider();
 
-                XMPPConnection connection = protocolProvider.getConnection();
-                if (connection == null)
+                if (protocolProvider.getConnection() == null)
                 {
                     logger.error("Connection is NULL");
                     return;

@@ -41,6 +41,11 @@ public class OperationSetMultiUserChatImpl
     private final XmppProtocolProvider protocolProvider;
 
     /**
+     * Smack-compatible connection wrapper for the protocol provider.
+     */
+    private XmppConnectionSmackAdapter smackAdapter;
+
+    /**
      * The map of active chat rooms mapped by their names.
      */
     private final Map<String, ChatRoomImpl> rooms = new HashMap<>();
@@ -53,6 +58,7 @@ public class OperationSetMultiUserChatImpl
     OperationSetMultiUserChatImpl(XmppProtocolProvider protocolProvider)
     {
         this.protocolProvider = protocolProvider;
+        this.smackAdapter = new XmppConnectionSmackAdapter( protocolProvider.getConnection() );
     }
 
     /**
@@ -180,7 +186,7 @@ public class OperationSetMultiUserChatImpl
      */
     public XMPPConnection getConnection()
     {
-        return protocolProvider.getConnection();
+        return smackAdapter;
     }
 
     /**

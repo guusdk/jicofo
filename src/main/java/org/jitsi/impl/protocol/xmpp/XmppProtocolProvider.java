@@ -125,8 +125,7 @@ public class XmppProtocolProvider
         addSupportedOperationSet(
             OperationSetColibriConference.class, colibriTools);
 
-        this.jingleOpSet = new OperationSetJingleImpl(
-                this.getConnectionAdapter());
+        this.jingleOpSet = new OperationSetJingleImpl(this);
         addSupportedOperationSet(OperationSetJingle.class, jingleOpSet);
 
         addSupportedOperationSet(
@@ -445,9 +444,9 @@ public class XmppProtocolProvider
      *
      * @return implementation of {@link org.jitsi.protocol.xmpp.XmppConnection}
      */
-    public XMPPConnection getConnection()
+    public XmppConnection getConnection()
     {
-        return connection;
+        return getConnectionAdapter();
     }
 
     /**
